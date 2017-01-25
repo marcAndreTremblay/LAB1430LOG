@@ -18,7 +18,7 @@ public class TestInquire
 		Card testCard = new Card(1);	
 		Money amountTest = new Money(0);
 		
-		Message m = new Message(4, testCard, 42, 2, 0, -1, amountTest);
+		Message m = new Message(Message.INQUIRY, testCard, 42, 2, 0, -1, amountTest);
 		
 		Balances b = new Balances();
 
@@ -34,7 +34,7 @@ public class TestInquire
 		Card testCard = new Card(1);	
 		Money amountTest = new Money(0);
 		
-		Message m = new Message(4, testCard, 42, 2, 1, -1, amountTest);
+		Message m = new Message(Message.INQUIRY, testCard, 42, 2, 1, -1, amountTest);
 		
 		Balances b = new Balances();
 
@@ -50,7 +50,7 @@ public class TestInquire
 		Card testCard = new Card(2);	
 		Money amountTest = new Money(0);
 		
-		Message m = new Message(4, testCard, 1234, 2, 2, -1, amountTest);
+		Message m = new Message(Message.INQUIRY, testCard, 1234, 2, 2, -1, amountTest);
 		
 		Balances b = new Balances();
 

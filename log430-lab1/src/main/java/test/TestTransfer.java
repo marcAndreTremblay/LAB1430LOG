@@ -18,7 +18,7 @@ public class TestTransfer
 		Money amountTest = new Money(20);
 		Money moneyBalanceTest = new Money(10000);
 		
-		Message m = new Message(3, testCard, 42, 2, 0, 1, amountTest);
+		Message m = new Message(Message.TRANSFER, testCard, 42, 2, 0, 1, amountTest);
 		
 		Balances b = new Balances();
 		b.setBalances(moneyBalanceTest, moneyBalanceTest);
