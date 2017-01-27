@@ -22,11 +22,11 @@ public class TestTransfer
 	public void test_transfer_checkingsToSavings()
 	{		
 		//Checks that money is money is transfered to savings
-		Message m1 = new Message(Message.TRANSFER, new Card(1), PIN_CARD1, SERIALNUMBER, ACCOUNT_CHECKINGS, ACCOUNT_SAVINGS, new Money(10));		
+		Message m = new Message(Message.TRANSFER, new Card(1), PIN_CARD1, SERIALNUMBER, ACCOUNT_CHECKINGS, ACCOUNT_SAVINGS, new Money(10));		
 		Balances b = new Balances();
 
 		SimulatedBank sb = new SimulatedBank();
-		sb.handleMessage(m1, b);
+		sb.handleMessage(m, b);
 		
 		assertEquals(b.getAvailable().toString(), "$1010.00");
 		
