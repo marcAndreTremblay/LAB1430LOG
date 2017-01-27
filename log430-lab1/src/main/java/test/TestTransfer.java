@@ -30,7 +30,7 @@ public class TestTransfer
 		
 		assertEquals(b.getAvailable().toString(), "$1010.00");
 		
-		//checks that money transfered was in fact from checkings account
+		//checks that money transfered was in fact from checkings
 		Message m2 = new Message(Message.INQUIRY, new Card(1), PIN_CARD1, SERIALNUMBER, ACCOUNT_CHECKINGS, -1, new Money(0));
 		sb.handleMessage(m2, b);
 		
@@ -40,7 +40,7 @@ public class TestTransfer
 	@Test
 	public void test_transfer_savingsToCheckings()
 	{	
-		//Checks that money is money is transfered to checkings
+		//Checks that money is transfered to checkings
 		Message m = new Message(Message.TRANSFER, new Card(1), PIN_CARD1, SERIALNUMBER, ACCOUNT_SAVINGS, ACCOUNT_CHECKINGS, new Money(40));		
 		Balances b = new Balances();
 
@@ -49,7 +49,7 @@ public class TestTransfer
 		
 		assertEquals(b.getAvailable().toString(), "$140.00");
 		
-		//checks that money transfered was in fact from savings account
+		//checks that money transfered was in fact from savings
 		Message m2 = new Message(Message.INQUIRY, new Card(1), PIN_CARD1, SERIALNUMBER, ACCOUNT_SAVINGS, -1, new Money(0));
 		sb.handleMessage(m2, b);
 		
@@ -58,7 +58,8 @@ public class TestTransfer
 	
 	@Test
 	public void test_transfer_MoneyMarketToCheckings()
-	{		
+	{
+		//Checks that money is transfered to checkings
 		Message m = new Message(Message.TRANSFER, new Card(2), PIN_CARD2, SERIALNUMBER, ACCOUNT_MONEYMARKET, ACCOUNT_CHECKINGS, new Money(30));	
 		Balances b = new Balances();
 
@@ -67,7 +68,7 @@ public class TestTransfer
 		
 		assertEquals(b.getAvailable().toString(), "$130.00");
 		
-		//checks that money transfered was in fact from money market account
+		//checks that money transfered was in fact from money market
 		Message m2 = new Message(Message.INQUIRY, new Card(2), PIN_CARD2, SERIALNUMBER, ACCOUNT_MONEYMARKET, -1, new Money(0));
 		sb.handleMessage(m2, b);
 		
@@ -77,6 +78,7 @@ public class TestTransfer
 	@Test
 	public void test_transfer_checkingsToMoneyMarket()
 	{	
+		//Checks that money is transfered to money market
 		Message m = new Message(Message.TRANSFER, new Card(2), PIN_CARD2, SERIALNUMBER, ACCOUNT_CHECKINGS, ACCOUNT_MONEYMARKET, new Money(100));
 		Balances b = new Balances();
 		
@@ -85,7 +87,7 @@ public class TestTransfer
 		
 		assertEquals(b.getAvailable().toString(), "$5100.00");
 		
-		//checks that money transfered was in fact from money market account
+		//checks that money transfered was in fact from checkings
 		Message m2 = new Message(Message.INQUIRY, new Card(2), PIN_CARD2, SERIALNUMBER, ACCOUNT_CHECKINGS, -1, new Money(0));
 		sb.handleMessage(m2, b);
 		
