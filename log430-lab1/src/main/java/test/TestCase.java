@@ -40,7 +40,39 @@ public class TestCase {
 		assertTrue(b1.getTotal().Equal(new Money(0)) == false);
 	}
 	@Test
-	public void TransactionDepossit() {
+	public void TransactionDepossitATMAndSimulation() {
+		 ATM theATM = new ATM(42, "Gordon College", "First National Bank of Podunk",
+                 null /* We're not really talking to a bank! */);
+		 Simulation theSimulation = new Simulation(theATM);
+		 Card testCard = new Card(1);
+		 Money deposit_test = new Money(20,30);
+		 Message m1 = new Message(Message.INITIATE_DEPOSIT, testCard, 42, 2, -1, 1, deposit_test);
+		Message m2 = new Message(Message.COMPLETE_DEPOSIT, testCard, 42, 2, -1, 1, deposit_test);
+		
+		Balances b1 = new Balances();
+		 theSimulation.sendMessage(m1, null);
+		 theSimulation.sendMessage(m2, b1);
+		 
+		 
+		 assertTrue(b1.getTotal().Equal(new Money(1020,30)) == true);
+	}
+	@Test
+	public void TransactionWitdrawalATMAndSimulation() {
+		 ATM theATM = new ATM(42, "Gordon College", "First National Bank of Podunk",
+                 null /* We're not really talking to a bank! */);
+		 Simulation theSimulation = new Simulation(theATM);
+		 Card testCard = new Card(1);
+		 Money removed_amount = new Money(20);
+		 Message m1 = new Message(Message.WITHDRAWAL, testCard, 42, 2, 1, -1, removed_amount);
+			
+			Balances b1 = new Balances();
+		 theSimulation.sendMessage(m1, b1);
+		 
+		 
+		 assertTrue(b1.getTotal().Equal(new Money(980)) == true);
+	}
+	@Test
+	public void TransactionDepossitSimulatedBank 	() {
 		SimulatedBank sb = new SimulatedBank();
 		Card testCard = new Card(1);
 		
