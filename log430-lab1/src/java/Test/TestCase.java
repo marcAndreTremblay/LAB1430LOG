@@ -1,4 +1,4 @@
-
+package Test;
 import static org.junit.Assert.*;
 
 import java.net.InetAddress;
@@ -42,7 +42,8 @@ public class TestCase {
 	public void TransactionDepossitATMAndSimulation() {
 		 ATM theATM = new ATM(42, "Gordon College", "First National Bank of Podunk",
                  null /* We're not really talking to a bank! */);
-		 Simulation theSimulation = new Simulation(theATM);
+		 Simulation theSimulation = new Simulation();
+		 theSimulation.register(theATM);
 		 Card testCard = new Card(1);
 		 Money deposit_test = new Money(20,30);
 		 Message m1 = new Message(Message.INITIATE_DEPOSIT, testCard, 42, 2, -1, 1, deposit_test);
@@ -59,7 +60,8 @@ public class TestCase {
 	public void TransactionWitdrawalATMAndSimulation() {
 		 ATM theATM = new ATM(42, "Gordon College", "First National Bank of Podunk",
                  null /* We're not really talking to a bank! */);
-		 Simulation theSimulation = new Simulation(theATM);
+		 Simulation theSimulation = new Simulation();
+		 theSimulation.register(theATM);
 		 Card testCard = new Card(1);
 		 Money removed_amount = new Money(20);
 		 Message m1 = new Message(Message.WITHDRAWAL, testCard, 42, 2, 1, -1, removed_amount);
